@@ -1,0 +1,12 @@
+image: centos:7
+
+rpm:
+  script:
+    - yum install -y java-1.8.0-openjdk-headless wget
+    - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    - chmod +x lein
+    - ./lein uberjar
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 week
